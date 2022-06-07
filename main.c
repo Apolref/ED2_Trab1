@@ -56,7 +56,7 @@ int **OrdenaNumeros(int n,int **A) {
 }
 
 
-
+/*
 int main(void){
   int **A;
   int n = 4;
@@ -74,3 +74,4 @@ int main(void){
 
   A = Liberar_matriz(n,2,A);
 }
+*/
