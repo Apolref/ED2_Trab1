@@ -1,0 +1,9 @@
+HTML
+pull request
+elementos HTML
+o
+Uma frase intrusa.
+complexificou o merge
+fluxo de dados atual
+interpolacao dinamica
+de strings
