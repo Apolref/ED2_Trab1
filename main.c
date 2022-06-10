@@ -6,62 +6,10 @@
 //*******************************************************************************************************************************************//
 
 
-int OrdenaDigitos(int n, int **A,int posicao){
-
-    int B[10]={0,0,0,0,0,0,0,0,0,0}, digito=0;
-
-    for(int i = 0; i < n;){
-        digito = A[i][0]/posicao;
-        digito = digito%10;
-        //printf("\n %d \n", digito);
-        B[digito] = B[digito]+1;
-
-        i++;
-    }
-
-    for (int i=1;i<9;i++){
-        B[i]= B[i]+ B[i-1];
-
-    }
-
-    int C[n][2];
-
-    for (int i=n-1; i==0;i--){
-        digito = A[i][0]/posicao;
-        digito = digito%10;
-        B[digito] = B[digito]-1;
-        C[B[digito]][0] = A[i][0];
-        C[B[digito]][1] = A[i][1];
-    }
-
-    for (int i=0;i<n;i++){
-        A[i][0] = C[i][0];
-        A[i][1] = C[i][1];
-    }
-
-    return 1;
-}
-
-int OrdenaNumeros(int n,int **A) {
-
-    int maior = 0;
-    for (int i=0;i<n;i++){
-        if (A[i][0]>maior){
-            maior = A[i][0];
-        }
-    }
-
-    //printf("\n %d \n", maior);
-
-    int posicao = 1;
-    while (maior/posicao>0){
-        OrdenaDigitos(n,A,posicao);
-        posicao = posicao*10;
-    }
-    return 1;
-
-}
-
+#include <stdio.h>
+#include <stdlib.h>
+#include "matriz.h"
+/*
 int Alocar_matriz(int m, int n, int **v){
     int i;
     if (m < 1 || n < 1) {
@@ -96,14 +44,70 @@ int Liberar_matriz (int m, int n, int **v) {
     free (v);
     return 1;
 }
+*/
+
+void OrdenaDigitos(int n, int **A, int posicao){
+
+  int B[10]={0,0,0,0,0,0,0,0,0,0}, digito=0;
+  int **C;
+
+  C = Alocar_matriz(n,2);
+  
+  for(int i=0; i < n ;i++){
+    digito = A[i][0]/posicao;
+    digito = digito%10;
+    B[digito] = B[digito]+1;
+  }
+
+  for (int i=1;i<=9;i++){
+    B[i]= B[i]+ B[i-1];
+  }
+
+  for (int i=n-1; i>=0;i--){
+    digito = A[i][0]/posicao;
+    digito = digito%10;
+    B[digito] = B[digito]-1;
+    C[B[digito]][0] = A[i][0];
+    C[B[digito]][1] = A[i][1];
+  }
+
+  for (int i=0;i<n;i++){
+    A[i][0] = C[i][0];
+    A[i][1] = C[i][1];
+  }
+  
+  Liberar_matriz(n,2,C);
+}
+
+void OrdenaNumeros(int n,int **A) {
+  int posicao = 1;
+  int maior = 0;
+  
+  for (int i=0;i<n-1;i++){
+    if (A[i][0]>maior){
+      maior = A[i][0];
+    }
+  }
+  
+  while ((maior/posicao)>0){
+    OrdenaDigitos(n,A,posicao);
+    posicao=posicao*10;
+  }
+}
+
 
 
 //*******************************************************************************************************************************************//
 
 
 void contagem_intersecoes(FILE *arq_A, FILE *arq_B, int nA, int nB, FILE *arquivo_saida){
-    int A[nA][2], B[nB][2], contagens[nA];
+    int **A; 
+    int **B; 
+    int contagens[nA];
     int inicio, fim, primeiro_iB = 0;
+    A = Alocar_matriz(nA,2);
+    B = Alocar_matriz(nB,2);
+    
     for(int i = 0; i < nA; i++){
         contagens[i] = 0;
     }
@@ -118,8 +122,9 @@ void contagem_intersecoes(FILE *arq_A, FILE *arq_B, int nA, int nB, FILE *arquiv
         B[i][0] = inicio;
         B[i][1] = fim;
     }
-    OrdenaNumeros(nA, **A);
-    OrdenaNumeros(nB, **B);
+    OrdenaNumeros(nA, A);
+    OrdenaNumeros(nB, B);
+  
     for(int iA = 0; iA < nA; iA++){
         for(int iB = primeiro_iB; iB < nB; iB++){
             if(A[iA][1] < B[iB][0] || A[iA][0] > B[iB][1]){
@@ -325,3 +330,4 @@ int main() {
     fclose(arquivo_saida);
     return 0;
 }
+
