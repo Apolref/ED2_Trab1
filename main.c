@@ -103,14 +103,17 @@ void OrdenaNumeros(int n,int **A) {
 void contagem_intersecoes(FILE *arq_A, FILE *arq_B, int nA, int nB, FILE *arquivo_saida){
     int **A; 
     int **B; 
-    int contagens[nA];
+    int *contagens;
     int inicio, fim, primeiro_iB = 0;
     A = Alocar_matriz(nA,2);
     B = Alocar_matriz(nB,2);
     
+    contagens = (int*)calloc((nA, sizeof(int))
+    /*
     for(int i = 0; i < nA; i++){
         contagens[i] = 0;
     }
+    */                         
     for(int i = 0; i < nA; i++){
         fscanf(arq_A, "%d", &inicio);
         fscanf(arq_A, "%d", &fim);
@@ -139,6 +142,10 @@ void contagem_intersecoes(FILE *arq_A, FILE *arq_B, int nA, int nB, FILE *arquiv
     for(int i = 0; i < nA; i++){
         fprintf(arquivo_saida, "%d\n", contagens[i]);
     }
+    
+    free(contagens)
+    Liberar_matriz(n,2,A);
+    Liberar_matriz(n,2,B);  
 }
 
 
