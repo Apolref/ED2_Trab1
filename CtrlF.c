@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ctrlf.h"
+#include "Ctrlf.h"
 
 
 int ler_arq(char **str, FILE *arq, char stop_char){//extrai todo o conteudo do arquivo p/ uma string
