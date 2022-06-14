@@ -120,8 +120,8 @@ long CtrlF(FILE *arq_texto, FILE *arq_trechos, FILE **arq_saida) {//método de b
 /*   9   */         }
 /*   10  */         if (trecho[j] == '\0' ) {
 /*   11  */             n = pLinhaCSV(&saida,i,i+j-1);
-/*   11  */             fwrite(saida , 1,n, *arq_saida );
-/*   12  */             break;//ISSO FAZ BUSCAR SÓ A PRIMEIRA OCORRÊNCIA!!!
+/*   11  */             fwrite(saida , 1,(int)n, *arq_saida );
+/*   12  */             //break;//ISSO FAZ BUSCAR SÓ A PRIMEIRA OCORRÊNCIA!!!
 /*   13  */         }
 /*   14  */         i++;
 /*   15  */     }
