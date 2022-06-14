@@ -8,5 +8,5 @@
 
 #endif //T1TEMP_ORDENA_H
 
-void OrdenaDigitos(int n, int **A, int posicao);
-void OrdenaNumeros(int n,int **A);
+void OrdenaDigitos(int n, long **A, int posicao);
+void OrdenaNumeros(int n,long **A);

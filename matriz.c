@@ -3,20 +3,20 @@
 #include "matriz.h"
 
 
-int **Alocar_matriz(int m, int n){
-    int **v;
+long **Alocar_matriz(int m, int n){
+    long **v;
     int i;
     if (m < 1 || n < 1) {
         printf ("** Erro: Parametro invalido **\n");
         return (NULL);
     }
-    v = (int **) calloc (m, sizeof(int *));
+    v = (long **) calloc (m, sizeof(long *));
     if (v == NULL) {
         printf ("** Erro: Memoria Insuficiente **");
         return (NULL);
     }
     for ( i = 0; i < m; i++ ) {
-        v[i] = (int*) calloc (n, sizeof(int));
+        v[i] = (long*) calloc (n, sizeof(long));
         if (v[i] == NULL) {
             printf ("** Erro: Memoria Insuficiente **");
             return (NULL);
@@ -25,7 +25,7 @@ int **Alocar_matriz(int m, int n){
     return (v);
 }
 
-int **Liberar_matriz (int m, int n, int **v) {
+long **Liberar_matriz (int m, int n, long **v) {
     int i;
     if (v == NULL) return (NULL);
     if (m < 1 || n < 1) {

@@ -4,10 +4,10 @@
 #include "Ordena.h"
 
 
-void OrdenaDigitos(int n, int **A, int posicao){
+void OrdenaDigitos(int n, long **A, int posicao){
 
     int B[10]={0,0,0,0,0,0,0,0,0,0}, digito=0;
-    int **C;
+    long **C;
 
     C = Alocar_matriz(n,2);
 
@@ -37,7 +37,7 @@ void OrdenaDigitos(int n, int **A, int posicao){
     Liberar_matriz(n,2,C);
 }
 
-void OrdenaNumeros(int n,int **A) {
+void OrdenaNumeros(int n,long **A) {
     int posicao = 1;
     int maior = 0;
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Ctrlf.h"
+#include "CtrlF.h"
 
 
 int ler_arq(char **str, FILE *arq, char stop_char){//extrai todo o conteudo do arquivo p/ uma string
@@ -126,6 +126,7 @@ int CtrlF(FILE *arq_texto, FILE *arq_trechos, FILE **arq_saida) {//método de bu
 /*   16  */ }
 // *** AQUI TERMINA A IMPLEMENTACAO DA FUNCAO SEGUNDO AS EXPECIFICACOES DO PDF *** //
 
+    fseek(*arq_saida,0,SEEK_SET);
     free(trecho);
     free(texto);
     free(saida);

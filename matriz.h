@@ -8,5 +8,5 @@
 #endif //T1TEMP_MATRIZ_H
 
 
-int **Alocar_matriz(int m, int n);
-int **Liberar_matriz (int m, int n, int **v);
+long **Alocar_matriz(int m, int n);
+long **Liberar_matriz (int m, int n, long **v);

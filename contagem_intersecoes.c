@@ -6,14 +6,14 @@
 
 
 void contagem_intersecoes(FILE *arq_A, FILE *arq_B, int nA, int nB, FILE *arquivo_saida){
-    int **A;
-    int **B;
-    int *contagens;
+    long **A;
+    long **B;
+    long *contagens;
     int inicio, fim, primeiro_iB = 0;
     A = Alocar_matriz(nA,2);
     B = Alocar_matriz(nB,2);
 
-    contagens = (int*)calloc(nA, sizeof(int));
+    contagens = (long*)calloc(nA, sizeof(long));
     /*
     for(int i = 0; i < nA; i++){
         contagens[i] = 0;
@@ -45,7 +45,7 @@ void contagem_intersecoes(FILE *arq_A, FILE *arq_B, int nA, int nB, FILE *arquiv
         }
     }
     for(int i = 0; i < nA; i++){
-        fprintf(arquivo_saida, "%d\n", contagens[i]);
+        fprintf(arquivo_saida, "%ld\n", contagens[i]);
     }
 
     free(contagens);
