@@ -8,13 +8,13 @@ int main() {
     char *leitura = NULL;
 
     FILE *pos_genes;
-    pos_genes = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\pos_genes_pequeno.csv", "r");
+    pos_genes = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\pos_genes_grande.csv", "r");
     if (pos_genes == NULL){
         printf("Problemas na criacao do arquivo POS GENES\n");
         return -1;
     }
     FILE *arquivo_genoma;
-    arquivo_genoma = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\genoma_pequeno.txt", "r+");
+    arquivo_genoma = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\genoma_grande.txt", "r+");
     if (arquivo_genoma == NULL){
         printf("Problemas na criacao do arquivo GENOMA\n");
         return -1;

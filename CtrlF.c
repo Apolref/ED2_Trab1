@@ -3,8 +3,8 @@
 #include "CtrlF.h"
 
 
-int ler_arq(char **str, FILE *arq, char stop_char){//extrai todo o conteudo do arquivo p/ uma string
-    int tam=1;//Eh o tamanho da string, aumenta dinamicamente
+long ler_arq(char **str, FILE *arq, char stop_char){//extrai todo o conteudo do arquivo p/ uma string
+    long tam=1;//Eh o tamanho da string, aumenta dinamicamente
     int flag=1;//flag que diz se é o arquivo já está no final, ates de começar a leitura
     for (char c = getc(arq); !((c == stop_char)||(c == EOF)); c = getc(arq)){//lendo arquivo char p/ char
         if(c=='\n')//pela logica do exemplo do PDF "pull'\n'request" e "pull' 'request" devem ser tratados iguais
@@ -28,7 +28,7 @@ int ler_arq(char **str, FILE *arq, char stop_char){//extrai todo o conteudo do a
 }
 
 
-long b10(int n){//retorna bases de 10,ou seja, faz 10^n p/ n>0
+long b10(long n){//retorna bases de 10,ou seja, faz 10^n p/ n>0
     if(n<0)
         return -1;
     long result=1;
@@ -39,10 +39,10 @@ long b10(int n){//retorna bases de 10,ou seja, faz 10^n p/ n>0
 }
 
 
-int pLinhaCSV(char **str, long n, long m){//transfoma 2 numeros em uma string no formato de linha do .CSV "n,m\n"
-    int tam = 0;// tamanho da string
-    int cursor=0;//cursor de escrita em str
-    int cont;//contador de quantas casas decimais tem um número
+long pLinhaCSV(char **str, long n, long m){//transfoma 2 numeros em uma string no formato de linha do .CSV "n,m\n"
+    long tam = 0;// tamanho da string
+    long cursor=0;//cursor de escrita em str
+    long cont;//contador de quantas casas decimais tem um número
     *str = realloc(*str, (tam+=3) * sizeof(char));//criando espaço para ';' '\n' '\0' em str
     if(*str==NULL) {
         printf("Falha ao alocar memoria para a string str");
@@ -67,7 +67,7 @@ int pLinhaCSV(char **str, long n, long m){//transfoma 2 numeros em uma string no
         free(*str);
         return -1;
     }
-    for(int i=0; i<=cont; i++) {//inserindo n em str
+    for(long i=0; i<=cont; i++) {//inserindo n em str
         (*str)[cursor] = (n/b10(cont-i))+'0';
         n=(n%b10(cont-i));
         cursor++;
@@ -92,7 +92,7 @@ int pLinhaCSV(char **str, long n, long m){//transfoma 2 numeros em uma string no
         free(*str);
         return -1;
     }
-    for(int i=0; i<=cont; i++) {//inserindo n em str
+    for(long i=0; i<=cont; i++) {//inserindo n em str
         (*str)[cursor] = (m/b10(cont-i))+'0';
         m=(m%b10(cont-i));
         cursor++;
@@ -104,11 +104,11 @@ int pLinhaCSV(char **str, long n, long m){//transfoma 2 numeros em uma string no
 }
 
 
-int CtrlF(FILE *arq_texto, FILE *arq_trechos, FILE **arq_saida) {//método de busca exigido pelo o trabalho
+long CtrlF(FILE *arq_texto, FILE *arq_trechos, FILE **arq_saida) {//método de busca exigido pelo o trabalho
     char *trecho = NULL;
     char *texto = NULL;
     char *saida = NULL;
-    int n;
+    long n;
 // *** AQUI COMECA A IMPLEMENTACAO DA FUNCAO SEGUNDO AS EXPECIFICACOES DO PDF *** //
 /*   1   */ ler_arq(&texto, arq_texto, EOF);
 /* 2 e 3 */ while ( ler_arq(&trecho, arq_trechos, '\n') != -1) {

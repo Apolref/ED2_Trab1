@@ -8,7 +8,7 @@
 #endif //T1TEMP_CTRLF_H
 
 
-int ler_arq(char **str, FILE *arq, char stop_char);
-long b10(int n);
-int pLinhaCSV(char **str, long n, long m);
-int CtrlF(FILE *arq_texto, FILE *arq_trechos, FILE **arq_saida);
+long ler_arq(char **str, FILE *arq, char stop_char);
+long b10(long n);
+long pLinhaCSV(char **str, long n, long m);
+long CtrlF(FILE *arq_texto, FILE *arq_trechos, FILE **arq_saida);
