@@ -46,7 +46,6 @@ int main() {
     n_fragmentos = 0;
     while( ler_arq(&leitura, pos_fragmentos, '\n') == 1 )
         n_fragmentos++;
-    fseek(pos_fragmentos,0,SEEK_SET);
     contagem_intersecoes(pos_genes, pos_fragmentos, n_genes, n_fragmentos, arquivo_saida);
 
 

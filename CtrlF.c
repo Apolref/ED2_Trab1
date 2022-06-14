@@ -19,8 +19,10 @@ int ler_arq(char **str, FILE *arq, char stop_char){//extrai todo o conteudo do a
         tam++;
         flag=0;
     }
-    if(flag==1)//arquivo já está no fim
+    if(flag==1){//arquivo já está no fim
+        fseek(arq,0,SEEK_SET);
         return -1;
+    }
     (*str)[tam-1]='\0';//indicando o fim da string
     return 1;
 }
