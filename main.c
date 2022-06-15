@@ -68,8 +68,9 @@ int main() {
             printf("Problemas na para acessar ou criar um dos arquivos!\n");
             return -1;
         }
+        soma_ciclos = 0;
         for (int j = 0; j < repeticoes; j++) {//REPETINDO 10 VEZES CADA ENTRADA
-            soma_ciclos = 0;
+            ciclos_ini = clock();
 
 // *** ---------- INICIO EXECUCAO DA MAIN( ) ---------- ***
             CtrlF(arquivo_genoma, arquivo_fragmentos, &pos_fragmentos);
@@ -94,7 +95,7 @@ int main() {
         }
         printf("\nTempo: %lfs", (((double) soma_ciclos) / repeticoes) / CLOCKS_PER_SEC);
     }
-    printf("\n%d/%d\n", repeticoes*N_entradas, repeticoes*N_entradas);
+    printf("\n%d/%d Sucesso!\n", repeticoes*N_entradas, repeticoes*N_entradas);
     fclose(pos_genes);
     fclose(arquivo_genoma);
     fclose(arquivo_fragmentos);
