@@ -16,6 +16,7 @@ int main() {
     arquivo_saida = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\saida.txt","w");
     pos_fragmentos = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\pos_fragmentos.txt", "w");
     printf("\n// GENOMA // FRAGMENTOS // POS GENES //");
+    printf("\n%d/%d", 0, repeticoes*N_entradas);
     for(int i=1; i<=N_entradas; i++) {// DEFININDO ENTRADAS - PEQUENAS/MEDIAS/GRANDES
         switch (i) {//COLOQUE NO LUGAR DO "i" QUAL CASO DE TESTE VC DESEJA RODAR, ex: "  switch (2) {  "
             case 1:
@@ -95,10 +96,10 @@ int main() {
             fclose(arquivo_genoma);
             fclose(arquivo_fragmentos);
             fclose(arquivo_saida);
-            printf("\n%d/%d", j+((i-1)*repeticoes), repeticoes*N_entradas);
+            printf("\n%d/%d", j+1+((i-1)*repeticoes), repeticoes*N_entradas);
         }
         printf("\nTempo: %lfs", (((double) soma_ciclos) / repeticoes) / CLOCKS_PER_SEC);
     }
-    printf("\n%d/%d Sucesso!\n", repeticoes*N_entradas, repeticoes*N_entradas);
+    printf("\nFIM!\n");
     return 0;
 }
