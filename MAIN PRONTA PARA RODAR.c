@@ -1,5 +1,5 @@
-#define repeticoes 10 //PADRAO 10
-#define N_entradas 7 //PADRAO 7
+#define repeticoes 1 //PADRAO 10
+#define N_entradas 1 //PADRAO 7
 #include <stdio.h>
 #include "CtrlF.h"
 #include "contagem_intersecoes.h"
@@ -17,7 +17,7 @@ int main() {
     pos_fragmentos = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\pos_fragmentos.txt", "w");
     printf("\n// GENOMA // FRAGMENTOS // POS GENES //");
     for(int i=1; i<=N_entradas; i++) {// DEFININDO ENTRADAS - PEQUENAS/MEDIAS/GRANDES
-        switch (i) {//COLOQUE NO LUGAR DO "i" QUAL CASO DE TESTE VC DESEJA RODAR, ex: "  switch (2) {  "
+        switch (1) {
             case 1:
                 printf("\n-----PGG-----");
                 pos_genes = fopen("C:\\Users\\Fernando Calaza\\Documents\\Faculdade\\ED2\\T1temp\\arquivos\\pos_genes_pequeno.csv", "r");
