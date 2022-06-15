@@ -91,14 +91,14 @@ int main() {
 
             soma_ciclos += clock() - ciclos_ini;
             fclose(pos_fragmentos);
+            fclose(pos_genes);
+            fclose(arquivo_genoma);
+            fclose(arquivo_fragmentos);
+            fclose(arquivo_saida);
             printf("\n%d/%d", j+((i-1)*repeticoes), repeticoes*N_entradas);
         }
         printf("\nTempo: %lfs", (((double) soma_ciclos) / repeticoes) / CLOCKS_PER_SEC);
     }
     printf("\n%d/%d Sucesso!\n", repeticoes*N_entradas, repeticoes*N_entradas);
-    fclose(pos_genes);
-    fclose(arquivo_genoma);
-    fclose(arquivo_fragmentos);
-    fclose(arquivo_saida);
     return 0;
 }
