@@ -3,14 +3,24 @@
 #include "contagem_intersecoes.h"
 #include "matriz.h"
 #include "Ordena.h"
+#include <time.h>
 
 
-void contagem_intersecoes(FILE *arq_A, FILE *arq_B, long nA, long nB, FILE *arquivo_saida){
+void contagem_intersecoes(FILE *arq_A, FILE *arq_B, long nA, long nB, FILE *arquivo_saida, clock_t *soma_ciclosA,clock_t *soma_ciclosB){
     long **A;
     long **B;
     long *contagens;
     long inicio, fim, primeiro_iB = 0;
+    clock_t ciclos_ini;
     A = Alocar_matriz(nA,2);
+    //A = (long **) malloc (2, sizeof(long *));
+    //for ( i = 0; i < 2; i++ ) {
+    //    A[i] = (long*) malloc (2, sizeof(long));
+    //    if (v[i] == NULL) {
+    //        printf ("** Erro: Memoria Insuficiente **");
+    //        return (NULL);
+    //    }
+    //}
     B = Alocar_matriz(nB,2);
 
     contagens = (long*)calloc(nA, sizeof(long));
@@ -30,9 +40,12 @@ void contagem_intersecoes(FILE *arq_A, FILE *arq_B, long nA, long nB, FILE *arqu
         B[i][0] = inicio;
         B[i][1] = fim;
     }
-
+    ciclos_ini = clock();
     OrdenaNumeros(nA, A);
+    (*soma_ciclosA) += clock() - ciclos_ini;
+    ciclos_ini = clock();
     OrdenaNumeros(nB, B);
+    (*soma_ciclosB) += clock() - ciclos_ini;
 
 
     for(int iA = 0; iA < nA; iA++){
