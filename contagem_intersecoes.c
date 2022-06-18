@@ -11,14 +11,6 @@ void contagem_intersecoes(FILE *arq_A, FILE *arq_B, long nA, long nB, FILE *arqu
     long *contagens;
     long inicio, fim, primeiro_iB = 0;
     A = Alocar_matriz(nA,2);
-    //A = (long **) malloc (2, sizeof(long *));
-    //for ( i = 0; i < 2; i++ ) {
-    //    A[i] = (long*) malloc (2, sizeof(long));
-    //    if (v[i] == NULL) {
-    //        printf ("** Erro: Memoria Insuficiente **");
-    //        return (NULL);
-    //    }
-    //}
     B = Alocar_matriz(nB,2);
 
     contagens = (long*)calloc(nA, sizeof(long));
